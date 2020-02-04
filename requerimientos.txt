@@ -1,0 +1,11 @@
+Django==1.11.2
+psycopg2==2.7.1
+gunicorn==19.7.0
+gevent==1.2.2
+djangorestframework==3.6.3
+requests==2.18.2
+djangorestframework-queryfields==1.0.0
+ipdb
+uwsgi
+
+
