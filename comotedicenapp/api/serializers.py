@@ -8,9 +8,7 @@ class CategoriaSerializer(ModelSerializer):
 
     class Meta:
         model = Categoria
-        fields = (
-            'id', 'nombre'
-        )
+        fields = ('nombre',)
 
 class DichoSerializer(ModelSerializer):
     
@@ -19,5 +17,5 @@ class DichoSerializer(ModelSerializer):
     class Meta:
         model = Dicho
         fields = (
-            'id', 'titulo', 'dicho', 'fecha_creacion', 'categoria', 'rango'
+            'titulo', 'dicho', 'categoria', 'rango'
         )

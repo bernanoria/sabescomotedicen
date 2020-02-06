@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
 from rest_framework import routers
-from api.views import (CategoriaViewSet, DichoViewSet)
+from api.views import (CategoriaViewSet, DichoViewSet, GetDicho)
 
 
 router = routers.DefaultRouter()
@@ -28,6 +28,7 @@ router.register(r'dichos', DichoViewSet, base_name='dichos')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^random/', GetDicho),
 ]
 
 urlpatterns += router.urls

@@ -16,6 +16,7 @@ from django.core.files import File  # you need this somewhere
 import urllib
 import re
 from rest_framework.generics import ListAPIView, RetrieveAPIView
+import random
 
 
 class CategoriaViewSet(ModelViewSet):
@@ -56,3 +57,11 @@ class DichoViewSet(ModelViewSet):
         return HttpResponse(json.dumps({"mensaje": dicho_serializado}), status=status.HTTP_200_OK,content_type="application/json")
 
 
+def GetDicho(ModelViewSet):
+    http_method_names = ['get']
+
+    dichos = Dicho.objects.all()
+    large = len(dichos)
+    elem = random.randrange(large)
+    dicho_serializado = DichoSerializer(dichos[elem]).data
+    return HttpResponse(json.dumps({"mensaje": dicho_serializado}), status=status.HTTP_200_OK,content_type="application/json")
