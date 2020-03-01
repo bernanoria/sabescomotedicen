@@ -17,6 +17,7 @@ import urllib
 import re
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 import random
+from django.shortcuts import render
 
 
 class CategoriaViewSet(ModelViewSet):
@@ -29,7 +30,6 @@ class CategoriaViewSet(ModelViewSet):
             categoria_serializado = CategoriaSerializer(categoria).data
             data.append(categoria_serializado)
         
-        print data
         return HttpResponse(json.dumps({"mensaje": data}), status=status.HTTP_200_OK,content_type="application/json")
 
     
@@ -57,11 +57,20 @@ class DichoViewSet(ModelViewSet):
         return HttpResponse(json.dumps({"mensaje": dicho_serializado}), status=status.HTTP_200_OK,content_type="application/json")
 
 
-def GetDicho(ModelViewSet):
+def GetDicho(request):
     http_method_names = ['get']
 
     dichos = Dicho.objects.all()
     large = len(dichos)
     elem = random.randrange(large)
-    dicho_serializado = DichoSerializer(dichos[elem]).data
-    return HttpResponse(json.dumps({"mensaje": dicho_serializado}), status=status.HTTP_200_OK,content_type="application/json")
+    return render(request, 'random.html', { 'dicho': dichos[elem].dicho })
+    #return HttpResponse(json.dumps({"mensaje": dicho_serializado}), status=status.HTTP_200_OK,content_type="application/json")
+
+def cargarDatos(request):
+    http_method_names = ['get']
+    archivo = open("datos.txt", "r")
+    dichos = archivo.readlines()
+    cat = Categoria.objects.get(id=2)
+    for item in dichos:
+        new = Dicho(titulo=item,dicho=item,rango=0)
+        new.save()

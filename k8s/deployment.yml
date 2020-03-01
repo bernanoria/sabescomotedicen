@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabescomotedicen
+  namespace: sabescomotedicen
+  labels:
+    app: sabescomotedicen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sabescomotedicen
+  template:
+    metadata:
+      labels:
+        app: sabescomotedicen
+    spec:
+      containers:
+        - name: sabescomotedicen
+          image: "bernanoria/sabescomotedicen:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000

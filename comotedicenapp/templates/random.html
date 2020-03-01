@@ -1,0 +1,14 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Sabes como te dicen</title>
+    </head>
+    <body>
+        {% load staticfiles %}
+        <img src="{% static 'portada.jpeg' %}"/>
+        <b></b>
+        <div class="alert alert-info">
+            <h1>{{ dicho }}</h1>
+        </div>
+    </body> 
+</html>

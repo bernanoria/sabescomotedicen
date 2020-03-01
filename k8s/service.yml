@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sabescomotedicen
+  namespace: sabescomotedicen
+spec:
+  type: NodePort
+  selector:
+    app: sabescomotedicen
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      name: http
